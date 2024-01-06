@@ -1,0 +1,16 @@
+name: Build
+on:
+  pull_request:
+    branches: "*"
+  workflow_dispatch:
+jobs:
+  build:
+    permissions:
+      contents: write
+    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-release-template.yml@main
+    with:
+      project-name: 'jcdcdev.Umbraco.PackageTemplate'
+      project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+      deploy: false
+    secrets:
+      nuget-api-key: ${{ secrets.NUGET_API_KEY }}

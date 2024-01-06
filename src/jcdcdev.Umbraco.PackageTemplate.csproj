@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageId>jcdcdev.Umbraco.PackageTemplate</PackageId>
+        <Title>jcdcdev's Umbraco Package Template</Title>
+        <Authors>James Carter</Authors>
+        <Description>An opinionated Umbraco Package template for Github and NuGet</Description>
+        <PackageTags>dotnet-new;templates;umbraco</PackageTags>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <PackageVersion>$([System.DateTime]::UtcNow.ToString(`yyyy`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`MM`).TrimStart(`0`))$([System.DateTime]::UtcNow.ToString(`dd`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`Hmm`).TrimStart(`0`))</PackageVersion>
+        <Version>$(PackageVersion)</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+</Project>

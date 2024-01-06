@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "James Carter",
+  "classifications": [
+    "Common",
+    "Console"
+  ],
+  "identity": "jcdcdev.Umbraco.PackageTemplate",
+  "name": "jcdcdev's Umbraco Package Template",
+  "shortName": "jcdcdev-umb-package",
+  "sourceName": "jcdcdev.Umbraco.PackageTemplate",
+  "description": "An opinionated template for creating Umbraco packages hosted in Github.",
+  "symbols": {
+    "gh-username": {
+      "type": "parameter",
+      "description": "GitHub Username",
+      "datatype": "text",
+      "replaces": "TOKEN_GITHUB_USERNAME",
+      "isRequired": true
+    },
+    "title": {
+      "type": "parameter",
+      "description": "Package Title",
+      "datatype": "text",
+      "replaces": "TOKEN_TITLE",
+      "isRequired": true
+    },
+    "description": {
+      "type": "parameter",
+      "description": "Package Description",
+      "datatype": "text",
+      "replaces": "TOKEN_DESCRIPTION",
+      "isRequired": true
+    },
+    "author-name": {
+      "type": "parameter",
+      "description": "Package Author",
+      "datatype": "text",
+      "replaces": "TOKEN_AUTHOR",
+      "isRequired": true
+    },
+    "author-description": {
+      "type": "parameter",
+      "description": "Package Author Description",
+      "datatype": "text",
+      "replaces": "TOKEN_AUTHOR_DESCRIPTION",
+      "defaultValue": ""
+    },
+    "author-url": {
+      "type": "parameter",
+      "description": "Package Author URL",
+      "datatype": "text",
+      "replaces": "TOKEN_AUTHOR_URL",
+      "defaultValue": "https://github.com/TOKEN_GITHUB_USERNAME"
+    },
+    "author-image-url": {
+      "type": "parameter",
+      "description": "Package Author Image URL",
+      "datatype": "text",
+      "replaces": "TOKEN_AUTHOR_IMAGE_URL",
+      "defaultValue": ""
+    }
+  },
+  "tags": {
+    "language": "C#",
+    "platform": "Umbraco",
+    "type": "solution"
+  }
+}
