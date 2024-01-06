@@ -11,6 +11,12 @@
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
+        <PackageProjectUrl>https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>images\icon.png</PackageIcon>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -18,4 +24,14 @@
         <Version>$(PackageVersion)</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="template\**\*" Exclude="template\**\bin\**;template\**\obj\**"/>
+        <Compile Remove="**\*"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="..\docs\icon.png" Pack="true" Visible="false" PackagePath="images\icon.png"/>
+        <None Include="..\.github\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>
