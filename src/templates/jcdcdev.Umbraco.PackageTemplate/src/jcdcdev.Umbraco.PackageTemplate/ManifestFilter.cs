@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Umbraco.Cms.Core.Manifest;
 
 namespace jcdcdev.Umbraco.PackageTemplate;
