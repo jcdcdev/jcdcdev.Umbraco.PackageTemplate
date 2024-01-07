@@ -14,5 +14,3 @@ jobs:
       npm-enabled: true
       npm-working-dir: './src/jcdcdev.Umbraco.PackageTemplate.Client/'
       npm-run-command: 'build'
-    secrets:
-      nuget-api-key: ${{ secrets.NUGET_API_KEY }}
