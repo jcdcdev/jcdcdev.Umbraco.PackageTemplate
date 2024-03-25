@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Umbraco.Cms.Core.Manifest;
 
-namespace jcdcdev.Umbraco.PackageTemplate;
+namespace UmbracoPackageTemplate.Composing;
 
 internal class ManifestFilter : IManifestFilter
 {
@@ -9,7 +8,7 @@ internal class ManifestFilter : IManifestFilter
     {
         manifests.Add(new PackageManifest
         {
-            PackageName = "jcdcdev.Umbraco.PackageTemplate",
+            PackageName = "UmbracoPackageTemplate",
             Version = GetType().Assembly.GetName().Version?.ToString(3) ?? "0.1.0",
             AllowPackageTelemetry = true
         });

@@ -3,23 +3,25 @@
 		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 		<LangVersion>10</LangVersion>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 		<ContentTargetFolders>.</ContentTargetFolders>
-		<Product>jcdcdev.Umbraco.PackageTemplate</Product>
-		<PackageId>jcdcdev.Umbraco.PackageTemplate</PackageId>
+		<Product>UmbracoPackageTemplate</Product>
+		<PackageId>UmbracoPackageTemplate</PackageId>
 		<Title>TOKEN_TITLE</Title>
 		<Description>TOKEN_DESCRIPTION</Description>
 		<PackageTags>umbraco;umbraco-marketplace</PackageTags>
 		<Authors>TOKEN_AUTHOR</Authors>
 		<Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © TOKEN_AUTHOR</Copyright>
-		<PackageProjectUrl>https://github.com/TOKEN_GITHUB_USERNAME/jcdcdev.Umbraco.PackageTemplate</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/TOKEN_GITHUB_USERNAME/jcdcdev.Umbraco.PackageTemplate</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>images\icon.png</PackageIcon>
+		<NuGetAuditMode>all</NuGetAuditMode>
+		<NuGetAuditLevel>high</NuGetAuditLevel>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
@@ -39,9 +41,16 @@
 		<Version>$(PackageVersion)</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png"/>
 		<None Include="..\..\.github\README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
+	
+<!--	<ItemGroup>-->
+<!--		<Content Include="..\UmbracoPackageTemplate.Client\**\*.*">-->
+<!--			<Link>UmbracoPackageTemplate.Client\%(RecursiveDir)%(Filename)%(Extension)</Link>-->
+<!--			<CopyToOutputDirectory>Never</CopyToOutputDirectory>-->
+<!--		</Content>-->
+<!--	</ItemGroup>-->
 </Project>

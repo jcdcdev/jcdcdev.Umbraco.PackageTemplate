@@ -1,9 +1,9 @@
-# jcdcdev.Umbraco.PackageTemplate
+# UmbracoPackageTemplate
 
 [![Umbraco Version](https://img.shields.io/badge/Umbraco-10.4+-%233544B1?style=flat&logo=umbraco)](https://umbraco.com/products/umbraco-cms/)
-[![NuGet](https://img.shields.io/nuget/vpre/jcdcdev.Umbraco.PackageTemplate?color=0273B3)](https://www.nuget.org/packages/jcdcdev.Umbraco.PackageTemplate)
-[![GitHub license](https://img.shields.io/github/license/TOKEN_GITHUB_USERNAME/jcdcdev.Umbraco.PackageTemplate?color=8AB803)](../LICENSE)
-[![Downloads](https://img.shields.io/nuget/dt/jcdcdev.Umbraco.PackageTemplate?color=cc9900)](https://www.nuget.org/packages/jcdcdev.Umbraco.PackageTemplate/)
+[![NuGet](https://img.shields.io/nuget/vpre/UmbracoPackageTemplate?color=0273B3)](https://www.nuget.org/packages/UmbracoPackageTemplate)
+[![GitHub license](https://img.shields.io/github/license/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate?color=8AB803)](../LICENSE)
+[![Downloads](https://img.shields.io/nuget/dt/UmbracoPackageTemplate?color=cc9900)](https://www.nuget.org/packages/UmbracoPackageTemplate/)
 
 TOKEN_DESCRIPTION
 

@@ -1,7 +1,7 @@
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 
-namespace jcdcdev.Umbraco.PackageTemplate;
+namespace UmbracoPackageTemplate.Composing;
 
 public class Composer : IComposer
 {

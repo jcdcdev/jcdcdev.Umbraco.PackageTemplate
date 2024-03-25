@@ -6,19 +6,19 @@
     "Url": "TOKEN_AUTHOR_URL",
     "ImageUrl": "TOKEN_AUTHOR_IMAGE_URL"
   },
-  "Category": "Developer Tools",
+  "Category": "TOKEN_CATEGORY",
   "Description": "TOKEN_DESCRIPTION",
   "LicenseTypes": [
     "Free"
   ],
-  "DocumentationUrl": "https://github.com/TOKEN_GITHUB_USERNAME/jcdcdev.Umbraco.PackageTemplate/#quick-start",
-  "IssueTrackerUrl": "https://github.com/TOKEN_GITHUB_USERNAME/jcdcdev.Umbraco.PackageTemplate/issues",
-  "PackageType": "Package",
+  "DocumentationUrl": "https://github.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate/#quick-start",
+  "IssueTrackerUrl": "https://github.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate/issues",
+  "PackageType": "TOKEN_PACKAGE_TYPE",
   "Tags": [],
   "Title": "TOKEN_TITLE",
   "Screenshots": [
     {
-      "ImageUrl": "https://raw.githubusercontent.com/TOKEN_GITHUB_USERNAME/jcdcdev.Umbraco.PackageTemplate/main/docs/icon.png",
+      "ImageUrl": "https://raw.githubusercontent.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate/main/docs/icon.png",
       "Caption": "Package Icon"
     }
   ]

@@ -8,10 +8,10 @@ jobs:
   build:
     uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
     with:
-      project-name: 'jcdcdev.Umbraco.PackageTemplate'
-      project-path: './src/jcdcdev.Umbraco.PackageTemplate/jcdcdev.Umbraco.PackageTemplate.csproj'
+      project-name: 'UmbracoPackageTemplate'
+      project-path: './src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj'
       npm-enabled: true
-      npm-working-dir: './src/jcdcdev.Umbraco.PackageTemplate.Client/'
+      npm-working-dir: './src/UmbracoPackageTemplate.Client/'
       npm-run-command: 'build'
   release:
     needs:

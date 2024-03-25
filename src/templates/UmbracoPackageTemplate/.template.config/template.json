@@ -2,13 +2,13 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "James Carter",
   "classifications": [
-    "Common",
-    "Console"
+    "Umbraco",
+    "Package"
   ],
   "identity": "jcdcdev.Umbraco.PackageTemplate",
   "name": "jcdcdev's Umbraco Package Template",
   "shortName": "jcdcdev-umb-package",
-  "sourceName": "jcdcdev.Umbraco.PackageTemplate",
+  "sourceName": "UmbracoPackageTemplate",
   "description": "An opinionated template for creating Umbraco packages hosted in Github.",
   "symbols": {
     "gh-username": {
@@ -59,11 +59,59 @@
       "datatype": "text",
       "replaces": "TOKEN_AUTHOR_IMAGE_URL",
       "defaultValue": ""
+    },
+    "package-type": {
+      "type": "parameter",
+      "description": "Package Type",
+      "defaultValue": "Package",
+      "datatype": "choice",
+      "choices": [
+        "Package",
+        "Integration"
+      ],
+      "replaces": "TOKEN_PACKAGE_TYPE"
+    },
+    "category": {
+      "type": "parameter",
+      "description": "Package Category",
+      "datatype": "choice",
+      "defaultValue": "Developer Tools",
+      "choices": [
+        "Analytics & Insights",
+        "Campaign & Marketing",
+        "Commerce",
+        "Developer Tools",
+        "Editor Tools",
+        "Headless",
+        "PIM & DAM",
+        "Search",
+        "Themes & Starter Kits",
+        "Translations"
+      ],
+      "replaces": "TOKEN_CATEGORY"
+    },
+    "add-client": {
+      "type": "parameter",
+      "description": "Add Front End Client Build",
+      "datatype": "bool",
+      "defaultValue": "false"
     }
   },
   "tags": {
     "language": "C#",
     "platform": "Umbraco",
     "type": "solution"
-  }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!add-client)",
+          "exclude": [
+            "UmbracoPackageTemplate.Client/**"
+          ]
+        }
+      ]
+    }
+  ]
 }
