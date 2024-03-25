@@ -9,39 +9,59 @@ An opinionated template for creating Umbraco packages hosted on Github.
 
 ## Quick Start
 
-1. Create a git repository on GitHub and clone it locally
+### Prerequisites
 
-**Your github repository name must match the project name!**
+1. A basic understanding of NuGet package development
+    - A NuGet API key - [Create an API key](https://learn.microsoft.com/en-us/nuget/nuget-org/publish-a-package)
+2. A git repository on GitHub
+    - Your repository name must match the project name e.g. `Demo.Package`
+    - [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) - `NUGET_API_KEY`
+      with your NuGet API key
 
-2. Install template
+3. Install template
 
-```powershell
-dotnet new -i jcdcdev.Umbraco.PackageTemplate
-```
+    ```powershell
+    dotnet new install jcdcdev.Umbraco.PackageTemplate
+    ```
 
-3. Create new project
+### Create package
 
-```powershell
-dotnet new jcdcdev-umb-package -o Demo.Package --gh-username jcdcdev --title "My Demo Package" --description "An empty Umbraco package" --author-name "James C" --author-description "Lead .NET Developer" --author-url "https://jcdc.dev" --author-image-url "https://github.com/jcdcdev.png"
-```
+1. Create new project
 
-4. Open project in Visual Studio/Rider
-5. Build and run project
-6. Push your code and run a build GitHub Action
+    ```powershell
+    dotnet new jcdcdev-umb-package -o Demo.Package --gh-username jcdcdev --title "My Demo Package" --description "An empty Umbraco package" --author-name "James C" --author-description "Lead .NET Developer" --author-url "https://jcdc.dev" --author-image-url "https://github.com/jcdcdev.png"
+    ```
 
+2. Open project in your IDE
+3. Build and run project
+4. Congratulations! You have created an empty Umbraco package 🎉
+
+Now you can implement your package features.
+
+1. Update `README.md` with your package details
+2. Update `umbraco-marketplace.json` with your package details
+
+### Publish
+
+1. Push your code to GitHub
+2. Create a pull request into the `main` branch
+3. Merge the pull request
+4. A new release will be created
 
 ## Template Parameters
 
-
-| Name | Description | Example Value | Required |
-| --- | --- | --- | --- |
-| `--gh-username` | GitHub username - Used for project url and github actions. | jcdcdev | **Yes** |
-| `--title` | Package title - Used for NuGet metadata, README & `umbraco-marketplace.json` | `My Demo Package` | **Yes** |
-| `--description` | Package description - Used for NuGet metadata & `umbraco-marketplace.json` | `An empty Umbraco package` | **Yes** |
-| `--author-name` | Author name - Used for `umbraco-marketplace.json`| `James C` | No |
-| `--author-description` | Author description - Used for `umbraco-marketplace.json` | `Lead .NET Developer` | No |
-| `--author-url` | Author URL - Used for `umbraco-marketplace.json` | `https://jcdc.dev` | No |
-| `--author-image-url` | Author image URL - Used for `umbraco-marketplace.json` | `https://github.com/jcdcdev.png` | No |
+| Name                   | Description                                                                     | Example Value                    | Required |
+|------------------------|---------------------------------------------------------------------------------|----------------------------------|----------|
+| `--gh-username`        | GitHub username - Used for project url and github actions.                      | jcdcdev                          | **Yes**  |
+| `--title`              | Package title - Used for NuGet metadata, README & `umbraco-marketplace.json`    | `My Demo Package`                | **Yes**  |
+| `--description`        | Package description - Used for NuGet metadata & `umbraco-marketplace.json`      | `An empty Umbraco package`       | **Yes**  |
+| `--author-name`        | Author name - Used for `umbraco-marketplace.json`                               | `James C`                        | **Yes**  |
+| `--author-description` | Author description - Used for `umbraco-marketplace.json`                        | `Lead .NET Developer`            | No       |
+| `--author-url`         | Author URL - Used for `umbraco-marketplace.json`                                | `https://jcdc.dev`               | No       |
+| `--author-image-url`   | Author image URL - Used for `umbraco-marketplace.json`                          | `https://github.com/jcdcdev.png` | No       |
+| `--package-type`       | Package type - Used for `umbraco-marketplace.json`                              | `Package`                        | No       |
+| `--category`           | Package category - Used for `umbraco-marketplace.json`                          | `Developer Tools`                | No       |
+| `--add-client`         | Add a Front End project using Lit.js and TypeScript. Configured for Umbraco UI. | `true`                           | No       |
 
 ## Need help?
 
