@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEMPLATE_PATH: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.sln"
+      PACKAGE_PATH: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj"
       ARTIFACT_NAME: "jcdcdev-umbraco-package-template"
       ARTIFACT_OUTPUT: "./output"
       DOTNET_VERSION: "8.0.x"
@@ -33,7 +34,9 @@ jobs:
     - name: ⏬ Restore dependencies
       run: dotnet restore ${{ env.TEMPLATE_PATH }}
     - name: 🏗️ Build .NET
-      run: dotnet build ${{ env.TEMPLATE_PATH }} --output ${{ env.ARTIFACT_OUTPUT }}
+      run: dotnet build ${{ env.TEMPLATE_PATH }}
+    - name: 🏗️ Build NuGet Package
+      run: dotnet pack ${{ env.PACKAGE_PATH }} --output ${{ env.ARTIFACT_OUTPUT }}
     - name: ⬆️ Upload artifact
       uses: actions/upload-artifact@v2
       with:
