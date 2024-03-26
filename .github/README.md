@@ -63,6 +63,26 @@ Now you can implement your package features.
 | `--category`           | Package category - Used for `umbraco-marketplace.json`                          | `Developer Tools`                | No       |
 | `--add-client`         | Add a Front End project using Lit.js and TypeScript. Configured for Umbraco UI. | `true`                           | No       |
 
+## Test Sites
+
+The solution includes a test site for testing your package features against the following Umbraco versions:
+
+- 10.4.0
+- 12.0.0
+- 13.0.0
+
+Your package project is automatically referenced in each test site.
+
+### Running Locally
+
+On first boot each test site will:
+
+- Create a SQLite database
+- Create an admin user
+  - Username: `admin@example.com`
+  - Password: `1234567890`
+- Run a uSync import to add starter content
+
 ## Need help?
 
 - [Raise an issue](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate/issues)
