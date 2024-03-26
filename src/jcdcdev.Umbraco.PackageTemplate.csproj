@@ -11,7 +11,7 @@
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
-        <PackageProjectUrl>https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate</PackageProjectUrl>
+        <PackageProjectUrl>https://jcdc.dev/umbraco-packages/package-template</PackageProjectUrl>
         <RepositoryUrl>https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryType>git</RepositoryType>
