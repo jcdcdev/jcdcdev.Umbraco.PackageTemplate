@@ -27,12 +27,6 @@
 		<ProjectReference Include="..\UmbracoPackageTemplate\UmbracoPackageTemplate.csproj" />
 	</ItemGroup>
 
-
-
-	<ItemGroup>
-	  <Folder Include="uSync\uSync\" />
-	</ItemGroup>
-
 	<PropertyGroup>
 		<!-- Razor files are needed for the backoffice to work correctly -->
 		<CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>

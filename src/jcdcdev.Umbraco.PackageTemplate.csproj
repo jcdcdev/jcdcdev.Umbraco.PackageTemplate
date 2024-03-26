@@ -7,7 +7,7 @@
         <Authors>James Carter</Authors>
         <Description>An opinionated Umbraco Package template for Github and NuGet</Description>
         <PackageTags>dotnet-new;templates;umbraco</PackageTags>
-        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFramework>net8.0</TargetFramework>
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
@@ -17,21 +17,82 @@
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>images\icon.png</PackageIcon>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <PackageVersion>$([System.DateTime]::UtcNow.ToString(`yyyy`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`MM`).TrimStart(`0`))$([System.DateTime]::UtcNow.ToString(`dd`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`Hmm`).TrimStart(`0`))</PackageVersion>
         <Version>$(PackageVersion)</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**"/>
+        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;**\node_modules\**;**\.idea\**"/>
         <Compile Remove="**\*"/>
+        <Content Update="templates\UmbracoPackageTemplate\.template.config\template.Release.json">
+          <TransformOnBuild>false</TransformOnBuild>
+          <DependentUpon>template.json</DependentUpon>
+          <IsTransformFile>true</IsTransformFile>
+        </Content>
     </ItemGroup>
-    
+
     <ItemGroup>
         <None Include="..\docs\icon.png" Pack="true" Visible="false" PackagePath="images\icon.png"/>
         <None Include="..\.github\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <TemplateFiles Include="templates/**/template.json"/>
+        <TemplateTransformFiles Include="templates/**/template.*.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.SlowCheetah" Version="4.0.50">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+
+        <Content Update="@(TemplateFiles)">
+            <TransformOnBuild>true</TransformOnBuild>
+            <Pack>true</Pack>
+        </Content>
+
+        <Content Update="@(TemplateTransformFiles)">
+            <DependentUpon>template.json</DependentUpon>
+            <IsTransformFile>true</IsTransformFile>
+        </Content>
+    </ItemGroup>
+
+    <Target Name="PackTaskDependencies" AfterTargets="Build" BeforeTargets="GenerateNuspec">
+        <ItemGroup>
+            <Content Remove="@(ScFilesToTransform);@(TemplateTransformFiles)"/>
+            <Content Include="@(ScFilesToTransform->'%(DestinationFile)')">
+                <PackagePath>content\%(ScFilesToTransform.TargetPath)</PackagePath>
+            </Content>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="ReplacePackageVersion" BeforeTargets="PackTaskDependencies">
+        <ReplaceTextInFile InputFile="@(ScFilesToTransform->'%(DestinationFile)')" OutputFile="@(ScFilesToTransform->'%(DestinationFile)')" OldValue="#{Version}#" NewValue="$(Version)"/>
+        <Message Text="Replaced PACKAGE_VERSION with $(Version) in %(TemplateFiles.FullPath)" Importance="high"/>
+    </Target>
+
+    <UsingTask TaskName="ReplaceTextInFile" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <InputFile ParameterType="System.String" Required="true"/>
+            <OutputFile ParameterType="System.String" Required="true"/>
+            <OldValue ParameterType="System.String" Required="true"/>
+            <NewValue ParameterType="System.String" Required="true"/>
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System.IO"/>
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+                      File.WriteAllText(
+                        OutputFile,
+                        File.ReadAllText(InputFile).Replace(OldValue, NewValue)
+                      );
+                    ]]>
+            </Code>
+        </Task>
+    </UsingTask>
 </Project>
