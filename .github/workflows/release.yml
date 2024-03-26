@@ -10,8 +10,9 @@ jobs:
     with:
       project-name: 'jcdcdev.Umbraco.PackageTemplate'
       project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+      dotnet-pack: false
   release:
-    needs: 
+    needs:
       - build
     permissions:
       contents: write
