@@ -28,9 +28,19 @@ An opinionated template for creating Umbraco packages hosted on Github.
 
 1. Create new project
 
+    #### dotnet CLI
+
     ```powershell
-    dotnet new jcdcdev-umb-package -o Demo.Package --gh-username jcdcdev --title "My Demo Package" --description "An empty Umbraco package" --author-name "James C" --author-description "Lead .NET Developer" --author-url "https://jcdc.dev" --author-image-url "https://github.com/jcdcdev.png"
+    dotnet new jcdcdev-umb-package -o Demo.Package --ghUsername jcdcdev --title "My Demo Package" --description "An empty Umbraco package" --addClient    
     ```
+   
+   #### Visual Studio
+    - Open Visual Studio
+    - Create a new project
+    - Search for `jcdcdev-umb-package`
+    - Click `Next`
+    - Fill in the project title, description, and other details
+    - Click `Create`
 
 2. Open project in your IDE
 3. Build and run project
@@ -50,18 +60,18 @@ Now you can implement your package features.
 
 ## Template Parameters
 
-| Name                   | Description                                                                     | Example Value                    | Required |
-|------------------------|---------------------------------------------------------------------------------|----------------------------------|----------|
-| `--gh-username`        | GitHub username - Used for project url and github actions.                      | jcdcdev                          | **Yes**  |
-| `--title`              | Package title - Used for NuGet metadata, README & `umbraco-marketplace.json`    | `My Demo Package`                | **Yes**  |
-| `--description`        | Package description - Used for NuGet metadata & `umbraco-marketplace.json`      | `An empty Umbraco package`       | **Yes**  |
-| `--author-name`        | Author name - Used for `umbraco-marketplace.json`                               | `James C`                        | **Yes**  |
-| `--author-description` | Author description - Used for `umbraco-marketplace.json`                        | `Lead .NET Developer`            | No       |
-| `--author-url`         | Author URL - Used for `umbraco-marketplace.json`                                | `https://jcdc.dev`               | No       |
-| `--author-image-url`   | Author image URL - Used for `umbraco-marketplace.json`                          | `https://github.com/jcdcdev.png` | No       |
-| `--package-type`       | Package type - Used for `umbraco-marketplace.json`                              | `Package`                        | No       |
-| `--category`           | Package category - Used for `umbraco-marketplace.json`                          | `Developer Tools`                | No       |
-| `--add-client`         | Add a Front End project using Lit.js and TypeScript. Configured for Umbraco UI. | `true`                           | No       |
+| Long Name         | Short Name | Description                                                                        | Datatype | Default Value                       | Required |
+|-------------------|------------|------------------------------------------------------------------------------------|----------|-------------------------------------|----------|
+| ghUsername        | u          | GitHub Username - Used for generating Package, Author, Documentation & Issues URLs | string   |                                     | Yes      |
+| title             | t          | Package Title - Used for generating NuGet package title                            | string   |                                     | Yes      |
+| description       | d          | Package Description - Used for generating NuGet package description and README.md  | string   |                                     | Yes      |
+| authorName        | an         | Package Author - Used for generating NuGet Author and Copyright                    | string   |                                     | No       |
+| authorDescription | ad         | Package Author Description - Used for umbraco-marketplace.json                     | string   |                                     | No       |
+| authorUrl         | au         | Package Author URL - Used for umbraco-marketplace.json                             | string   | `https://github.com/ghUsername`     | No       |
+| authorImageUrl    | aiu        | Package Author Image URL - Used for umbraco-marketplace.json                       | string   | `https://github.com/ghUsername.png` | No       |
+| packageType       | pt         | Package Type - Used for umbraco-marketplace.json                                   | choice   | Package                             | No       |
+| category          | c          | Package Category - Used for umbraco-marketplace.json                               | choice   | Developer Tools                     | No       |
+| addClient         | ac         | Includes a client project for the package (Lit.js & TypeScript)                    | bool     | false                               | No       |
 
 ## Test Sites
 

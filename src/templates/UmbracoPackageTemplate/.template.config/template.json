@@ -34,7 +34,7 @@
     },
     "authorName": {
       "type": "parameter",
-      "description": "Package Author",
+      "description": "Package Author - Used for generating NuGet Author and Copyright",
       "datatype": "string",
       "replaces": "TOKEN_AUTHOR",
       "defaultValue": "",
@@ -42,21 +42,21 @@
     },
     "authorDescription": {
       "type": "parameter",
-      "description": "Package Author Description",
+      "description": "Package Author Description - Used for umbraco-marketplace.json",
       "datatype": "string",
       "replaces": "TOKEN_AUTHOR_DESCRIPTION",
       "defaultValue": ""
     },
     "authorUrl": {
       "type": "parameter",
-      "description": "Package Author URL",
+      "description": "Package Author URL - Used for umbraco-marketplace.json",
       "datatype": "string",
       "replaces": "TOKEN_AUTHOR_URL",
       "defaultValue": "https://github.com/TOKEN_GITHUB_USERNAME"
     },
     "authorImageUrl": {
       "type": "parameter",
-      "description": "Package Author Image URL",
+      "description": "Package Author Image URL - Used for umbraco-marketplace.json",
       "datatype": "string",
       "replaces": "TOKEN_AUTHOR_IMAGE_URL",
       "defaultValue": "https://github.com/TOKEN_GITHUB_USERNAME.png"
