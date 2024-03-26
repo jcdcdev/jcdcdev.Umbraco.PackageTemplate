@@ -1,7 +1,7 @@
 name: Release
 on:
   pull_request:
-    branches: "main"
+    branches: [ "main" ]
     types: [ closed ]
   workflow_dispatch:
 jobs:
@@ -10,7 +10,7 @@ jobs:
     with:
       project-name: 'UmbracoPackageTemplate'
       project-path: './src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj'
-      npm-enabled: true
+      npm-enabled: TOKEN_ADD_CLIENT
       npm-working-dir: './src/UmbracoPackageTemplate.Client/'
       npm-run-command: 'build'
   release:

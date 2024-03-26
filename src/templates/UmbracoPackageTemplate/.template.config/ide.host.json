@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "https://json.schemastore.org/ide.host.json",
+  "order": 0,
+  "icon": "icon.png",
+  "defaultSymbolVisibility": true,
+  "symbolInfo": [
+    {
+      "id": "ghUsername",
+      "name": {
+        "text": "GitHub Username"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "title",
+      "name": {
+        "text": "Package Title"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "description",
+      "name": {
+        "text": "Package Description"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "authorName",
+      "name": {
+        "text": "Author Name"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "authorDescription",
+      "name": {
+        "text": "Author Description"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "authorUrl",
+      "name": {
+        "text": "Author URL"
+      },
+      "isVisible": false
+    },
+    {
+      "id": "authorImageUrl",
+      "name": {
+        "text": "Author Image URL"
+      },
+      "isVisible": false
+    },
+    {
+      "id": "packageType",
+      "name": {
+        "text": "Package Type"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "category",
+      "name": {
+        "text": "Category"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "addClient",
+      "name": {
+        "text": "Include Client Project"
+      },
+      "isVisible": true
+    }
+  ]
+}

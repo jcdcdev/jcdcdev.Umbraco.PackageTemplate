@@ -1,100 +1,126 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "James Carter",
+  "author": "jcdc.dev",
   "classifications": [
     "Umbraco",
     "Package"
   ],
   "identity": "jcdcdev.Umbraco.PackageTemplate",
-  "name": "jcdcdev's Umbraco Package Template",
+  "name": "Simple Umbraco Package",
   "shortName": "jcdcdev-umb-package",
   "sourceName": "UmbracoPackageTemplate",
-  "description": "An opinionated template for creating Umbraco packages hosted in Github.",
+  "description": "An opinionated template for creating Umbraco packages hosted on Github.",
   "symbols": {
-    "gh-username": {
+    "ghUsername": {
       "type": "parameter",
-      "description": "GitHub Username",
-      "datatype": "text",
+      "description": "GitHub Username - Used for generating Package, Author, Documentation & Issues URLs",
+      "datatype": "string",
       "replaces": "TOKEN_GITHUB_USERNAME",
       "isRequired": true
     },
     "title": {
       "type": "parameter",
-      "description": "Package Title",
-      "datatype": "text",
+      "description": "Package Title - Used for generating NuGet package title",
+      "datatype": "string",
       "replaces": "TOKEN_TITLE",
       "isRequired": true
     },
     "description": {
       "type": "parameter",
-      "description": "Package Description",
-      "datatype": "text",
+      "description": "Package Description - Used for generating NuGet package description and README.md",
+      "datatype": "string",
       "replaces": "TOKEN_DESCRIPTION",
       "isRequired": true
     },
-    "author-name": {
+    "authorName": {
       "type": "parameter",
       "description": "Package Author",
-      "datatype": "text",
+      "datatype": "string",
       "replaces": "TOKEN_AUTHOR",
-      "isRequired": true
+      "defaultValue": "",
+      "isRequired": false
     },
-    "author-description": {
+    "authorDescription": {
       "type": "parameter",
       "description": "Package Author Description",
-      "datatype": "text",
+      "datatype": "string",
       "replaces": "TOKEN_AUTHOR_DESCRIPTION",
       "defaultValue": ""
     },
-    "author-url": {
+    "authorUrl": {
       "type": "parameter",
       "description": "Package Author URL",
-      "datatype": "text",
+      "datatype": "string",
       "replaces": "TOKEN_AUTHOR_URL",
       "defaultValue": "https://github.com/TOKEN_GITHUB_USERNAME"
     },
-    "author-image-url": {
+    "authorImageUrl": {
       "type": "parameter",
       "description": "Package Author Image URL",
-      "datatype": "text",
+      "datatype": "string",
       "replaces": "TOKEN_AUTHOR_IMAGE_URL",
-      "defaultValue": ""
+      "defaultValue": "https://github.com/TOKEN_GITHUB_USERNAME.png"
     },
-    "package-type": {
+    "packageType": {
       "type": "parameter",
-      "description": "Package Type",
+      "description": "Package Type - Used for umbraco-marketplace.json",
       "defaultValue": "Package",
       "datatype": "choice",
       "choices": [
-        "Package",
-        "Integration"
+        {
+          "choice": "Package"
+        },
+        {
+          "choice": "Integration"
+        }
       ],
       "replaces": "TOKEN_PACKAGE_TYPE"
     },
     "category": {
       "type": "parameter",
-      "description": "Package Category",
+      "description": "Package Category - Used for umbraco-marketplace.json",
       "datatype": "choice",
       "defaultValue": "Developer Tools",
       "choices": [
-        "Analytics & Insights",
-        "Campaign & Marketing",
-        "Commerce",
-        "Developer Tools",
-        "Editor Tools",
-        "Headless",
-        "PIM & DAM",
-        "Search",
-        "Themes & Starter Kits",
-        "Translations"
+        {
+          "choice": "Analytics & Insights"
+        },
+        {
+          "choice": "Campaign & Marketing"
+        },
+        {
+          "choice": "Commerce"
+        },
+        {
+          "choice": "Developer Tools"
+        },
+        {
+          "choice": "Editor Tools"
+        },
+        {
+          "choice": "Headless"
+        },
+        {
+          "choice": "PIM & DAM"
+        },
+        {
+          "choice": "Search"
+        },
+        {
+          "choice": "Themes & Starter Kits"
+        },
+        {
+          "choice": "Translations"
+        }
       ],
       "replaces": "TOKEN_CATEGORY"
     },
-    "add-client": {
+    "addClient": {
       "type": "parameter",
-      "description": "Add Front End Client Build",
+      "description": "Includes a client project for the package (Lit.js & TypeScript) ",
       "datatype": "bool",
-      "defaultValue": "false"
+      "defaultValue": "false",
+      "replaces": "TOKEN_ADD_CLIENT"
     }
   },
   "tags": {
@@ -106,9 +132,9 @@
     {
       "modifiers": [
         {
-          "condition": "(!add-client)",
+          "condition": "(!addClient)",
           "exclude": [
-            "UmbracoPackageTemplate.Client/**"
+            "src/UmbracoPackageTemplate.Client/**"
           ]
         }
       ]
