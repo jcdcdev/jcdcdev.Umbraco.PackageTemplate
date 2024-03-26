@@ -11,4 +11,3 @@ jobs:
     with:
       project-name: 'jcdcdev.Umbraco.PackageTemplate'
       project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
-      pack-only: true
