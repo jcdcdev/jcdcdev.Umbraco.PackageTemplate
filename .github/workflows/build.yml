@@ -9,6 +9,7 @@ jobs:
     with:
       project-name: 'jcdcdev.Umbraco.PackageTemplate'
       project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+      dotnet-pack: false 
   build:
     uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
     with:

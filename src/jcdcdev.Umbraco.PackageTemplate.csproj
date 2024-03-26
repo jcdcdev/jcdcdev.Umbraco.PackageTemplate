@@ -17,12 +17,12 @@
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>images\icon.png</PackageIcon>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <PackageVersion>$([System.DateTime]::UtcNow.ToString(`yyyy`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`MM`).TrimStart(`0`))$([System.DateTime]::UtcNow.ToString(`dd`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`Hmm`).TrimStart(`0`))</PackageVersion>
         <Version>$(PackageVersion)</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
