@@ -1,13 +1,19 @@
-name: Build
+name: Build Template
 on:
   pull_request:
     branches: "*"
   workflow_dispatch:
 jobs:
-  build:
-    permissions:
-      contents: write
+  build-package:
     uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
     with:
       project-name: 'jcdcdev.Umbraco.PackageTemplate'
       project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+  build:
+    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
+    with:
+      project-name: 'UmbracoPackageTemplate'
+      project-path: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.sln"
+      npm-enabled: true
+      npm-working-dir: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.Client"
+      npm-run-command: 'build'
