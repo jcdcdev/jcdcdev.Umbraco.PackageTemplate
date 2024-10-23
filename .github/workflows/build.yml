@@ -1,22 +1,27 @@
 name: Build
 on:
   pull_request:
-    
   workflow_dispatch:
 jobs:
   build-package:
-    uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
-    with:
-      project-name: 'jcdcdev.Umbraco.PackageTemplate'
-      project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
-      dotnet-pack: false
-      umbraco-version: 13
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        with:
+          project-name: 'jcdcdev.Umbraco.PackageTemplate'
+          project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+          dotnet-pack: false
+          umbraco-version: 13
   build:
-    uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
-    with:
-      project-name: 'UmbracoPackageTemplate'
-      project-path: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.sln"
-      npm-enabled: true
-      npm-working-dir: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.Client"
-      npm-run-command: 'build'
-      umbraco-version: 13
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        with:
+          project-name: 'UmbracoPackageTemplate'
+          project-path: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.sln"
+          npm-enabled: true
+          npm-working-dir: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.Client"
+          npm-run-command: 'build'
+          umbraco-version: 13
