@@ -18,7 +18,7 @@
   "Title": "TOKEN_TITLE",
   "Screenshots": [
     {
-      "ImageUrl": "https://raw.githubusercontent.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate/main/docs/icon.png",
+      "ImageUrl": "https://raw.githubusercontent.com/TOKEN_GITHUB_USERNAME/UmbracoPackageTemplate/TOKEN_UMBRACO_VERSION/docs/icon.png",
       "Caption": "Package Icon"
     }
   ]

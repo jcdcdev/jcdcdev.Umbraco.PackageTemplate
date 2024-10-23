@@ -1,24 +1,27 @@
-name: Release
+name: 🚀 Release
 on:
-  pull_request:
-    branches: "main"
-    types: [ closed ]
   workflow_dispatch:
-jobs:
-  build:
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
-    with:
-      project-name: 'jcdcdev.Umbraco.PackageTemplate'
-      project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
-      dotnet-pack: false
+  pull_request:
+    types: [ closed ]
+jobs:  
   release:
-    needs:
-      - build
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/release-template.yml@main
-    with:
-      artifact-name: ${{ needs.build.outputs.artifact-name }}
-      version: ${{ needs.build.outputs.version }}
-    secrets:
-      nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+    steps:
+      - name: Build
+        id: build
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
+        with:
+          project-name: 'jcdcdev.Umbraco.PackageTemplate'
+          project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+          dotnet-pack: false
+          umbraco-version: 13
+      - name: Release
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main 
+        with:
+          artifact-name: ${{ needs.build.outputs.artifact-name }}
+          version: ${{ needs.build.outputs.version }}
+          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -4,7 +4,7 @@
         <PackageType>Template</PackageType>
         <PackageId>jcdcdev.Umbraco.PackageTemplate</PackageId>
         <Title>jcdcdev's Umbraco Package Template</Title>
-        <Authors>James Carter</Authors>
+        <Authors>jcdcdev</Authors>
         <Description>An opinionated Umbraco Package template for Github and NuGet</Description>
         <PackageTags>dotnet-new;templates;umbraco</PackageTags>
         <TargetFramework>net8.0</TargetFramework>
@@ -21,17 +21,22 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <PackageVersion>$([System.DateTime]::UtcNow.ToString(`yyyy`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`MM`).TrimStart(`0`))$([System.DateTime]::UtcNow.ToString(`dd`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`Hmm`).TrimStart(`0`))</PackageVersion>
+        <Major>13</Major>
+        <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
+        <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
+        <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>
+        <PackageVersion>$(Major).$(Minor).$(Patch)$(Suffix)</PackageVersion>
         <Version>$(PackageVersion)</Version>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;**\node_modules\**;**\.idea\**"/>
+        <Content Include="templates\**\*"
+                 Exclude="templates\**\bin\**;templates\**\obj\**;**\node_modules\**;**\.idea\**"/>
         <Compile Remove="**\*"/>
         <Content Update="templates\UmbracoPackageTemplate\.template.config\template.Release.json">
-          <TransformOnBuild>false</TransformOnBuild>
-          <DependentUpon>template.json</DependentUpon>
-          <IsTransformFile>true</IsTransformFile>
+            <TransformOnBuild>false</TransformOnBuild>
+            <DependentUpon>template.json</DependentUpon>
+            <IsTransformFile>true</IsTransformFile>
         </Content>
     </ItemGroup>
 
@@ -72,11 +77,15 @@
     </Target>
 
     <Target Name="ReplacePackageVersion" BeforeTargets="PackTaskDependencies">
-        <ReplaceTextInFile InputFile="@(ScFilesToTransform->'%(DestinationFile)')" OutputFile="@(ScFilesToTransform->'%(DestinationFile)')" OldValue="#{Version}#" NewValue="$(Version)"/>
-        <Message Text="Replaced PACKAGE_VERSION with $(Version) in %(TemplateFiles.FullPath)" Importance="high"/>
+        <ReplaceTextInFile InputFile="@(ScFilesToTransform->'%(DestinationFile)')"
+                           OutputFile="@(ScFilesToTransform->'%(DestinationFile)')" OldValue="#{Version}#"
+                           NewValue="$(Version)"/>
+        <Message Text="Replaced PACKAGE_VERSION with $(Version) in %(TemplateFiles.FullPath)"
+                 Importance="high"/>
     </Target>
 
-    <UsingTask TaskName="ReplaceTextInFile" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <UsingTask TaskName="ReplaceTextInFile" TaskFactory="RoslynCodeTaskFactory"
+               AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
         <ParameterGroup>
             <InputFile ParameterType="System.String" Required="true"/>
             <OutputFile ParameterType="System.String" Required="true"/>
