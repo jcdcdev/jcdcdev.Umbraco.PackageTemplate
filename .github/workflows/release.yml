@@ -6,17 +6,18 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
+    uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
     with:
       project-name: 'jcdcdev.Umbraco.PackageTemplate'
       project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
       dotnet-pack: false
+      umbraco-version: 13
   release:
     needs:
       - build
     permissions:
       contents: write
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/release-template.yml@main
+    uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main 
     with:
       artifact-name: ${{ needs.build.outputs.artifact-name }}
       version: ${{ needs.build.outputs.version }}

@@ -1,6 +1,5 @@
 # jcdcdev.Umbraco.PackageTemplate
 
-[![Umbraco Version](https://img.shields.io/badge/Umbraco-10.4+-%233544B1?style=flat&logo=umbraco)](https://umbraco.com/products/umbraco-cms/)
 [![NuGet](https://img.shields.io/nuget/vpre/jcdcdev.Umbraco.PackageTemplate?color=0273B3)](https://www.nuget.org/packages/jcdcdev.Umbraco.PackageTemplate)
 [![GitHub license](https://img.shields.io/github/license/jcdcdev/jcdcdev.Umbraco.PackageTemplate?color=8AB803)](../LICENSE)
 [![Downloads](https://img.shields.io/nuget/dt/jcdcdev.Umbraco.PackageTemplate?color=cc9900)](https://www.nuget.org/packages/jcdcdev.Umbraco.PackageTemplate/)
@@ -49,7 +48,8 @@ An opinionated template for creating Umbraco packages hosted on Github.
 Now you can implement your package features.
 
 1. Update `README.md` with your package details
-2. Update `umbraco-marketplace.json` with your package details
+2. Update `README_nuget.md` with your package details
+3. Update `umbraco-marketplace.json` with your package details
 
 ### Publish
 
@@ -75,17 +75,11 @@ Now you can implement your package features.
 
 ## Test Sites
 
-The solution includes a test site for testing your package features against the following Umbraco versions:
-
-- 10.4.0
-- 12.0.0
-- 13.0.0
-
-Your package project is automatically referenced in each test site.
+The solution includes a test site for testing your package features.
 
 ### Running Locally
 
-On first boot each test site will:
+On first boot the test site will:
 
 - Create a SQLite database
 - Create an admin user

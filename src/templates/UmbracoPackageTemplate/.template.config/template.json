@@ -11,6 +11,14 @@
   "sourceName": "UmbracoPackageTemplate",
   "description": "An opinionated template for creating Umbraco packages hosted on Github.",
   "symbols": {
+    "umbracoVersion": {
+      "type": "generated",
+      "generator": "constant",
+      "replaces": "TOKEN_UMBRACO_VERSION",
+      "parameters": {
+        "value": "13"
+      }
+    },
     "ghUsername": {
       "type": "parameter",
       "description": "GitHub Username - Used for generating Package, Author, Documentation & Issues URLs",
@@ -138,6 +146,28 @@
           ]
         }
       ]
+    }
+  ],
+  "postActions": [
+    {
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "description": "Initialize git repository and create branch {{TOKEN_UMBRACO_VERSION}}",
+      "manualInstructions": [
+        {
+          "text": "Run 'git init' to initialize a git repository."
+        },
+        {
+          "text": "Run 'git checkout -b v{{TOKEN_UMBRACO_VERSION}}' to create and switch to branch v{{TOKEN_UMBRACO_VERSION}}."
+        },
+        {
+          "text": "Run 'git checkout -b dev/v{{TOKEN_UMBRACO_VERSION}}' to create and switch to branch dev/v{{TOKEN_UMBRACO_VERSION}}."
+        }
+      ],
+      "continueOnError": true,
+      "args": {
+        "executable": "cmd",
+        "args": "/c git init && git checkout -b v{{TOKEN_UMBRACO_VERSION}} && git checkout -b dev/v{{TOKEN_UMBRACO_VERSION}}"
+      }
     }
   ]
 }
