@@ -1,35 +1,16 @@
-import {customElement} from "lit/decorators.js";
-import {css, html, LitElement} from "lit";
+import {UMB_AUTH_CONTEXT} from "@umbraco-cms/backoffice/auth";
+import {OpenAPI} from "./api";
+import {UmbEntryPointOnInit} from "@umbraco-cms/backoffice/extension-api";
 
-@customElement('custom-element')
-export default class CustomElement extends LitElement {
+export const onInit: UmbEntryPointOnInit = (_host, extensionRegistry) => {
+    // Register manifests here:
+    extensionRegistry.registerMany([]);
 
-	constructor() {
-		super();
-	}
-
-	render() {
-		return html`
-			<div>
-				<h1>Custom Element</h1>
-				<p>UmbracoPackageTemplate</p>
-			</div>`;
-	}
-
-	static styles = [css
-		`
-          div {
-            background-color: #f4f4f4;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
-          }
-		`
-	];
-}
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'custom-element': CustomElement;
-	}
-}
+    // Add OpenAPI configuration
+    _host.consumeContext(UMB_AUTH_CONTEXT, (_auth) => {
+        const umbOpenApi = _auth.getOpenApiConfiguration();
+        OpenAPI.TOKEN = umbOpenApi.token;
+        OpenAPI.BASE = umbOpenApi.base;
+        OpenAPI.WITH_CREDENTIALS = umbOpenApi.withCredentials;
+    });
+};
