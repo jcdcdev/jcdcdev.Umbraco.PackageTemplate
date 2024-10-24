@@ -21,7 +21,7 @@ jobs:
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main 
         with:
-          artifact-name: ${{ needs.build.outputs.artifact-name }}
-          version: ${{ needs.build.outputs.version }}
+          artifact-name: ${{ steps.build.outputs.artifact-name }}
+          version: ${{ steps.build.outputs.version }}
           nuget-api-key: ${{ secrets.NUGET_API_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
