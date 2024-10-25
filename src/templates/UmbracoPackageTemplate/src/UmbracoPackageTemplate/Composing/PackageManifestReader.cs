@@ -19,7 +19,7 @@ internal class PackageManifestReader : IPackageManifestReader
             Extensions = []
         };
 
-        extensions.Add(new EntryPointManifest
+        extensions.Add(new BackofficeEntryPointManifest
         {
             Name = $"{Constants.Api.ApiName}.entrypoint",
             Alias = $"{Constants.Api.ApiName}.entrypoint",

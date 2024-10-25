@@ -2,3 +2,5 @@
 obj/
 bin/
 .idea/
+**/wwwroot/App_Plugins/UmbracoPackageTemplate/dist
+*.orig
