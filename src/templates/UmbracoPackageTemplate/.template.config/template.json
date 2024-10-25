@@ -11,6 +11,15 @@
   "sourceName": "UmbracoPackageTemplate",
   "description": "An opinionated template for creating Umbraco packages hosted on Github.",
   "symbols": {
+    "clientName": {
+      "type": "generated",
+      "description": "Client Project Name - Used for generating client project name",
+      "generator": "evaluate",
+      "parameters": {
+        "expression": "sourceName.Split('.').Last().ToLower()"
+      },
+      "replaces": "TOKEN_CLIENT_NAME"
+    },
     "umbracoVersion": {
       "type": "generated",
       "generator": "constant",
