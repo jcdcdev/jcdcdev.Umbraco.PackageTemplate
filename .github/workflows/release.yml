@@ -17,7 +17,8 @@ jobs:
           project-name: 'jcdcdev.Umbraco.PackageTemplate'
           project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
           dotnet-pack: false
-          umbraco-version: 13
+          umbraco-version: 15
+          dotnet-version: "9"
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main 
         with:

@@ -19,6 +19,7 @@ jobs:
           npm-working-dir: src/UmbracoPackageTemplate.Client
           npm-enabled: true
           umbraco-version: TOKEN_UMBRACO_VERSION
+          dotnet-version: "9"
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
         with:

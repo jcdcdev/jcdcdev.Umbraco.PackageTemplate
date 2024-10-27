@@ -355,4 +355,4 @@ MigrationBackup/
 # Rider
 *.sqlite.db*
 .idea/
-/src/jcdcdev.Umbraco.PackageTemplate/wwwroot/App_Plugins/jcdcdev.Umbraco.PackageTemplate/dist
+*/App_Plugins/UmbracoPackageTemplate/dist
