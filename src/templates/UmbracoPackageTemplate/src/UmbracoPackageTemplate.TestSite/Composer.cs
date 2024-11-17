@@ -1,6 +1,6 @@
 using Umbraco.Cms.Core.Composing;
 
-namespace TestSite.Thirteen;
+namespace UmbracoPackageTemplate.TestSite;
 
 public class Composer : IComposer
 {
