@@ -1,5 +1,5 @@
 ignore:
-  commits-before: 2024-10-25T09:30:00
+  commits-before: 2024-10-25T08:30:00
 branches:
   main:
     regex: ^master$|^main$
