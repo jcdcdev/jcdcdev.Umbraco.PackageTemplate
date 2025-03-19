@@ -14,6 +14,6 @@
 	"devDependencies": {
 		"@umbraco-ui/uui": "^1.12.2",
 		"typescript": "^5.0.2",
-		"vite": "^6.0.11"
+		"vite": "^6.2.0"
 	}
 }
