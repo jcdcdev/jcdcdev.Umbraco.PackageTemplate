@@ -16,7 +16,7 @@
 		"@hey-api/openapi-ts": "^0.63.2",
 		"@umbraco-cms/backoffice": "^15.2.1",
 		"typescript": "^5.7.3",
-		"vite": "^5.4.14"
+		"vite": "^5.4.15"
 	},
 	"volta": {
 		"node": "20.18.0"
