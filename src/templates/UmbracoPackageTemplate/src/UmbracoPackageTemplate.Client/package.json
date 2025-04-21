@@ -9,11 +9,11 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"lit": "^3.2.1"
+		"lit": "^3.3.0"
 	},
 	"devDependencies": {
-		"@umbraco-ui/uui": "^1.12.2",
-		"typescript": "^5.0.2",
-		"vite": "^6.2.6"
+		"@umbraco-ui/uui": "^1.13.0",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.2"
 	}
 }
