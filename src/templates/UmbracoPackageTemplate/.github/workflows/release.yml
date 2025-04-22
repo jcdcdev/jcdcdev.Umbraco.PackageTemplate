@@ -17,7 +17,8 @@ jobs:
           project-name: UmbracoPackageTemplate
           project-path: src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj
           npm-working-dir: src/UmbracoPackageTemplate.Client
-          npm-enabled: true
+          npm-enabled: true         
+          npm-version: "22.x"
           umbraco-version: TOKEN_UMBRACO_VERSION
           dotnet-version: "9"
       - name: Release

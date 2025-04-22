@@ -25,5 +25,6 @@ jobs:
           npm-enabled: true
           npm-working-dir: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.Client"
           npm-run-command: 'build'
+          npm-version: "22.x"
           umbraco-version: 15
           dotnet-version: "9"

@@ -15,3 +15,4 @@ jobs:
           npm-enabled: true
           dotnet-version: "9"
           umbraco-version: TOKEN_UMBRACO_VERSION
+          npm-version: "22.x"
