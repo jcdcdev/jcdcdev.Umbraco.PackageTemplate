@@ -7,6 +7,11 @@
 
 An opinionated template for creating Umbraco packages hosted on GitHub.
 
+> [!IMPORTANT]
+> Version 14 will only receive security updates and no new features.
+
+> Please review the [security policy](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=security-ov-file#supported-versions) for more information.
+
 ## Quick Start
 
 ### Prerequisites
