@@ -13,9 +13,9 @@ public class ConfigApiSwaggerGenOptions : IConfigureOptions<SwaggerGenOptions>
             Constants.Api.ApiName,
             new OpenApiInfo
             {
-                Title = "Extended Dropdown Editor Api",
+                Title = Constants.Api.Title,
                 Version = "Latest",
-                Description = "API for Extended Dropdown Editor"
+                Description = Constants.Api.Description,
             });
     }
 }
