@@ -13,6 +13,6 @@ jobs:
           project-path: src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj
           npm-working-dir: src/UmbracoPackageTemplate.Client
           npm-enabled: true
-          dotnet-version: "9"
+          dotnet-version: "10"
           umbraco-version: TOKEN_UMBRACO_VERSION
           npm-version: "22.x"

@@ -2,7 +2,7 @@ name: 🚀 Release
 on:
   workflow_dispatch:
   pull_request:
-    types: [ closed ]
+    types: [closed]
 jobs:
   release:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
@@ -18,10 +18,10 @@ jobs:
           project-name: UmbracoPackageTemplate
           project-path: src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj
           npm-working-dir: src/UmbracoPackageTemplate.Client
-          npm-enabled: true         
+          npm-enabled: true
           npm-version: "22.x"
           umbraco-version: TOKEN_UMBRACO_VERSION
-          dotnet-version: "9"
+          dotnet-version: "10"
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
         with:
