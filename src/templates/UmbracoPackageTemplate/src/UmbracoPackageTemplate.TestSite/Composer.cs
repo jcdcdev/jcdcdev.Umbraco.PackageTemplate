@@ -1,5 +1,4 @@
 using Umbraco.Cms.Core.Composing;
-using Umbraco.Cms.Core.DependencyInjection;
 
 namespace UmbracoPackageTemplate.TestSite;
 
