@@ -7,9 +7,6 @@
 
 An opinionated template for creating Umbraco packages hosted on GitHub.
 
-> [!NOTE]
-> Version 17 is not released yet.
-
 ## Quick Start
 
 ### Prerequisites
