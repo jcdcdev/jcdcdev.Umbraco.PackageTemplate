@@ -7,7 +7,7 @@
         <Authors>jcdcdev</Authors>
         <Description>An opinionated Umbraco Package template for Github and NuGet</Description>
         <PackageTags>dotnet-new;templates;umbraco</PackageTags>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
@@ -21,7 +21,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <Major>16</Major>
+        <Major>17</Major>
         <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
         <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
         <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>
@@ -30,9 +30,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="templates\**\*"
-                 Exclude="templates\**\bin\**;templates\**\obj\**;**\node_modules\**;**\.idea\**"/>
-        <Compile Remove="**\*"/>
+        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;**\node_modules\**;**\.idea\**" />
+        <Compile Remove="**\*" />
         <Content Update="templates\UmbracoPackageTemplate\.template.config\template.Release.json">
             <TransformOnBuild>false</TransformOnBuild>
             <DependentUpon>template.json</DependentUpon>
@@ -41,17 +40,17 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\docs\icon.png" Pack="true" Visible="false" PackagePath="images\icon.png"/>
-        <None Include="..\.github\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\docs\icon.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
+        <None Include="..\.github\README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
-        <TemplateFiles Include="templates/**/template.json"/>
-        <TemplateTransformFiles Include="templates/**/template.*.json"/>
+        <TemplateFiles Include="templates/**/template.json" />
+        <TemplateTransformFiles Include="templates/**/template.*.json" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.VisualStudio.SlowCheetah" Version="4.0.50">
+        <PackageReference Include="Microsoft.VisualStudio.SlowCheetah" Version="4.0.118-g94a0027fb8">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
@@ -69,7 +68,7 @@
 
     <Target Name="PackTaskDependencies" AfterTargets="Build" BeforeTargets="GenerateNuspec">
         <ItemGroup>
-            <Content Remove="@(ScFilesToTransform);@(TemplateTransformFiles)"/>
+            <Content Remove="@(ScFilesToTransform);@(TemplateTransformFiles)" />
             <Content Include="@(ScFilesToTransform->'%(DestinationFile)')">
                 <PackagePath>content\%(ScFilesToTransform.TargetPath)</PackagePath>
             </Content>
@@ -77,23 +76,19 @@
     </Target>
 
     <Target Name="ReplacePackageVersion" BeforeTargets="PackTaskDependencies">
-        <ReplaceTextInFile InputFile="@(ScFilesToTransform->'%(DestinationFile)')"
-                           OutputFile="@(ScFilesToTransform->'%(DestinationFile)')" OldValue="#{Version}#"
-                           NewValue="$(Version)"/>
-        <Message Text="Replaced PACKAGE_VERSION with $(Version) in %(TemplateFiles.FullPath)"
-                 Importance="high"/>
+        <ReplaceTextInFile InputFile="@(ScFilesToTransform->'%(DestinationFile)')" OutputFile="@(ScFilesToTransform->'%(DestinationFile)')" OldValue="#{Version}#" NewValue="$(Version)" />
+        <Message Text="Replaced PACKAGE_VERSION with $(Version) in %(TemplateFiles.FullPath)" Importance="high" />
     </Target>
 
-    <UsingTask TaskName="ReplaceTextInFile" TaskFactory="RoslynCodeTaskFactory"
-               AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <UsingTask TaskName="ReplaceTextInFile" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
         <ParameterGroup>
-            <InputFile ParameterType="System.String" Required="true"/>
-            <OutputFile ParameterType="System.String" Required="true"/>
-            <OldValue ParameterType="System.String" Required="true"/>
-            <NewValue ParameterType="System.String" Required="true"/>
+            <InputFile ParameterType="System.String" Required="true" />
+            <OutputFile ParameterType="System.String" Required="true" />
+            <OldValue ParameterType="System.String" Required="true" />
+            <NewValue ParameterType="System.String" Required="true" />
         </ParameterGroup>
         <Task>
-            <Using Namespace="System.IO"/>
+            <Using Namespace="System.IO" />
             <Code Type="Fragment" Language="cs">
                 <![CDATA[
                       File.WriteAllText(

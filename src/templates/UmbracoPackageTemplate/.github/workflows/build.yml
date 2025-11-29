@@ -7,12 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@v17
         with:
           project-name: UmbracoPackageTemplate
           project-path: src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj
           npm-working-dir: src/UmbracoPackageTemplate.Client
           npm-enabled: true
-          dotnet-version: "9"
-          umbraco-version: TOKEN_UMBRACO_VERSION
-          npm-version: "22.x"
