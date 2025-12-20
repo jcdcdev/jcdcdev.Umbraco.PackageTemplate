@@ -7,21 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v0
         with:
-          project-name: 'jcdcdev.Umbraco.PackageTemplate'
-          project-path: './src/jcdcdev.Umbraco.PackageTemplate.csproj'
+          project-name: "jcdcdev.Umbraco.PackageTemplate"
+          project-path: "./src/jcdcdev.Umbraco.PackageTemplate.csproj"
           dotnet-pack: false
           umbraco-version: 13
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v0
         with:
-          project-name: 'UmbracoPackageTemplate'
+          project-name: "UmbracoPackageTemplate"
           project-path: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.sln"
           npm-enabled: true
           npm-working-dir: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.Client"
-          npm-run-command: 'build'
+          npm-run-command: "build"
           umbraco-version: 13
