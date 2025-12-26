@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@v17
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v17
         with:
           project-name: "jcdcdev.Umbraco.PackageTemplate"
           project-path: "./src/jcdcdev.Umbraco.PackageTemplate.csproj"
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@v17
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v17
         with:
           project-name: "UmbracoPackageTemplate"
           project-path: "./src/templates/UmbracoPackageTemplate/src/UmbracoPackageTemplate.sln"
