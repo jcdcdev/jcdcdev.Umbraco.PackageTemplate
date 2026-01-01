@@ -12,7 +12,6 @@ An opinionated template for creating Umbraco packages hosted on GitHub.
 
 > Please review the [security policy](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=security-ov-file#supported-versions) for more information.
 
-
 ## Quick Start
 
 ### Prerequisites
@@ -70,10 +69,8 @@ Now you can implement your package features.
 
 [Documentation](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=readme-ov-file#template-parameters)
 
-
 ## Contributing
 
 Contributions to this package are most welcome! Please visit the [Contributing](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate/contribute) page.
-
 
 
