@@ -12,6 +12,13 @@ An opinionated template for creating Umbraco packages hosted on GitHub.
 
 > Please review the [security policy](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=security-ov-file#supported-versions) for more information.
 
+## Installation
+
+### Install Package
+```csharp
+dotnet add package jcdcdev.Umbraco.PackageTemplate
+```
+
 ## Quick Start
 
 ### Prerequisites
@@ -24,10 +31,6 @@ An opinionated template for creating Umbraco packages hosted on GitHub.
       with your NuGet API key
 
 3. Install template
-
-    ```powershell
-    dotnet new install jcdcdev.Umbraco.PackageTemplate
-    ```
 
 ### Create package
 
