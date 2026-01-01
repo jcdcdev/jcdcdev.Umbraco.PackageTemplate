@@ -8,7 +8,6 @@
 
 An opinionated template for creating Umbraco packages hosted on GitHub.
 
-
 ## Quick Start
 
 ### Prerequisites
@@ -69,6 +68,5 @@ Now you can implement your package features.
 ## Contributing
 
 Contributions to this package are most welcome! Please visit the [Contributing](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate/contribute) page.
-
 
 
