@@ -17,4 +17,3 @@ An opinionated template for creating Umbraco packages hosted on GitHub.
 Contributions to this package are most welcome! Please visit the [Contributing](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate/contribute) page.
 
 
-
