@@ -11,7 +11,7 @@ An opinionated template for creating Umbraco packages hosted on GitHub.
 ## Installation
 
 ### Install Package
-```csharp
+```powershell
 dotnet add package jcdcdev.Umbraco.PackageTemplate
 ```
 
