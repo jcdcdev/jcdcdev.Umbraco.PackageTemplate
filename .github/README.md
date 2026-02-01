@@ -1,5 +1,6 @@
-# jcdcdev.Umbraco.PackageTemplate
+# Package Template
 
+[![Documentation](https://img.shields.io/badge/Documentation-123?color=394933&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjb2xvcj0id2hpdGUiIGNsYXNzPSJiaSBiaS1ib29rIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0xIDIuODI4Yy44ODUtLjM3IDIuMTU0LS43NjkgMy4zODgtLjg5MyAxLjMzLS4xMzQgMi40NTguMDYzIDMuMTEyLjc1MnY5Ljc0NmMtLjkzNS0uNTMtMi4xMi0uNjAzLTMuMjEzLS40OTMtMS4xOC4xMi0yLjM3LjQ2MS0zLjI4Ny44MTF6bTcuNS0uMTQxYy42NTQtLjY4OSAxLjc4Mi0uODg2IDMuMTEyLS43NTIgMS4yMzQuMTI0IDIuNTAzLjUyMyAzLjM4OC44OTN2OS45MjNjLS45MTgtLjM1LTIuMTA3LS42OTItMy4yODctLjgxLTEuMDk0LS4xMTEtMi4yNzgtLjAzOS0zLjIxMy40OTJ6TTggMS43ODNDNy4wMTUuOTM2IDUuNTg3LjgxIDQuMjg3Ljk0Yy0xLjUxNC4xNTMtMy4wNDIuNjcyLTMuOTk0IDEuMTA1QS41LjUgMCAwIDAgMCAyLjV2MTFhLjUuNSAwIDAgMCAuNzA3LjQ1NWMuODgyLS40IDIuMzAzLS44ODEgMy42OC0xLjAyIDEuNDA5LS4xNDIgMi41OS4wODcgMy4yMjMuODc3YS41LjUgMCAwIDAgLjc4IDBjLjYzMy0uNzkgMS44MTQtMS4wMTkgMy4yMjItLjg3NyAxLjM3OC4xMzkgMi44LjYyIDMuNjgxIDEuMDJBLjUuNSAwIDAgMCAxNiAxMy41di0xMWEuNS41IDAgMCAwLS4yOTMtLjQ1NWMtLjk1Mi0uNDMzLTIuNDgtLjk1Mi0zLjk5NC0xLjEwNUMxMC40MTMuODA5IDguOTg1LjkzNiA4IDEuNzgzIi8+Cjwvc3ZnPg==)](https://docs.jcdc.dev/jcdcdev-umbraco-packagetemplate/latest)
 [![GitHub](https://img.shields.io/badge/GitHub-1?logo=github&color=232925)](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/jcdcdev.Umbraco.PackageTemplate?labelColor=4536d3&color=4536d3&label=NuGet&logo=nuget)](https://www.nuget.org/packages/jcdcdev.Umbraco.PackageTemplate)
 [![Project Website](https://img.shields.io/badge/Project%20Website-jcdcdev?color=3c4834&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1wYy1kaXNwbGF5IiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik04IDFhMSAxIDAgMCAxIDEtMWg2YTEgMSAwIDAgMSAxIDF2MTRhMSAxIDAgMCAxLTEgMUg5YTEgMSAwIDAgMS0xLTF6bTEgMTMuNWEuNS41IDAgMSAwIDEgMCAuNS41IDAgMCAwLTEgMG0yIDBhLjUuNSAwIDEgMCAxIDAgLjUuNSAwIDAgMC0xIDBNOS41IDFhLjUuNSAwIDAgMCAwIDFoNWEuNS41IDAgMCAwIDAtMXpNOSAzLjVhLjUuNSAwIDAgMCAuNS41aDVhLjUuNSAwIDAgMCAwLTFoLTVhLjUuNSAwIDAgMC0uNS41TTEuNSAyQTEuNSAxLjUgMCAwIDAgMCAzLjV2N0ExLjUgMS41IDAgMCAwIDEuNSAxMkg2djJoLS41YS41LjUgMCAwIDAgMCAxSDd2LTRIMS41YS41LjUgMCAwIDEtLjUtLjV2LTdhLjUuNSAwIDAgMSAuNS0uNUg3VjJ6Ii8+Cjwvc3ZnPg==)](https://jcdc.dev/umbraco-packages/package-template)
@@ -14,58 +15,19 @@ An opinionated template for creating Umbraco packages hosted on GitHub.
 dotnet add package jcdcdev.Umbraco.PackageTemplate
 ```
 
-## Quick Start
-
-### Prerequisites
-
-1. A basic understanding of NuGet package development
-    - A NuGet API key - [Create an API key](https://learn.microsoft.com/en-us/nuget/nuget-org/publish-a-package)
-2. A git repository on GitHub
-    - Your repository name must match the project name e.g. `Demo.Package`
-    - [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) - `NUGET_API_KEY`
-      with your NuGet API key
-
-3. Install template
-
-### Create package
-
-1. Create new project
-
-    #### dotnet CLI
-
-    ```powershell
-    dotnet new jcdcdev-umb-package -o Demo.Package --ghUsername jcdcdev --title "My Demo Package" --description "An empty Umbraco package" --addClient    
-    ```
-   
-   #### Visual Studio
-    - Open Visual Studio
-    - Create a new project
-    - Search for `jcdcdev-umb-package`
-    - Click `Next`
-    - Fill in the project title, description, and other details
-    - Click `Create`
-
-2. Open project in your IDE
-3. Build and run project
-4. Congratulations! You have created an empty Umbraco package 🎉
-
-Now you can implement your package features.
-
-1. Update `README.md` with your package details
-2. Update `umbraco-marketplace.json` with your package details
-
-### Publish
-
-1. Push your code to GitHub
-2. Create a pull request into the `main` branch
-3. Merge the pull request
-4. A new release will be created
-
 ## Configuration
 
 ## Template Parameters
 
 [Documentation](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=readme-ov-file#template-parameters)
+
+## Security
+
+> [!NOTE]
+> This project takes security and support seriously.
+> Please visit the [Security](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=security-ov-file) page for more information.
+
+
 
 ## Contributing
 
