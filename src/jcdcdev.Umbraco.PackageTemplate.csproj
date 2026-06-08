@@ -21,7 +21,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <Major>17</Major>
+        <Major>18</Major>
         <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
         <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
         <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>

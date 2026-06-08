@@ -2,11 +2,19 @@
 
 import type { Config } from './types.gen';
 
-export type ServerSentEventsOptions<TData = unknown> = Omit<
-  RequestInit,
-  'method'
-> &
+export type ServerSentEventsOptions<TData = unknown> = Omit<RequestInit, 'method'> &
   Pick<Config, 'method' | 'responseTransformer' | 'responseValidator'> & {
+    /**
+     * Fetch API implementation. You can use this option to provide a custom
+     * fetch instance.
+     *
+     * @default globalThis.fetch
+     */
+    fetch?: typeof fetch;
+    /**
+     * Implementing clients can call request interceptors inside this hook.
+     */
+    onRequest?: (url: string, init: RequestInit) => Promise<Request>;
     /**
      * Callback invoked when a network or parsing error occurs during streaming.
      *
@@ -24,6 +32,7 @@ export type ServerSentEventsOptions<TData = unknown> = Omit<
      * @returns Nothing (void).
      */
     onSseEvent?: (event: StreamEvent<TData>) => void;
+    serializedBody?: RequestInit['body'];
     /**
      * Default retry delay in milliseconds.
      *
@@ -62,11 +71,7 @@ export interface StreamEvent<TData = unknown> {
   retry?: number;
 }
 
-export type ServerSentEventsResult<
-  TData = unknown,
-  TReturn = void,
-  TNext = unknown,
-> = {
+export type ServerSentEventsResult<TData = unknown, TReturn = void, TNext = unknown> = {
   stream: AsyncGenerator<
     TData extends Record<string, unknown> ? TData[keyof TData] : TData,
     TReturn,
@@ -74,7 +79,8 @@ export type ServerSentEventsResult<
   >;
 };
 
-export const createSseClient = <TData = unknown>({
+export function createSseClient<TData = unknown>({
+  onRequest,
   onSseError,
   onSseEvent,
   responseTransformer,
@@ -85,12 +91,10 @@ export const createSseClient = <TData = unknown>({
   sseSleepFn,
   url,
   ...options
-}: ServerSentEventsOptions): ServerSentEventsResult<TData> => {
+}: ServerSentEventsOptions): ServerSentEventsResult<TData> {
   let lastEventId: string | undefined;
 
-  const sleep =
-    sseSleepFn ??
-    ((ms: number) => new Promise((resolve) => setTimeout(resolve, ms)));
+  const sleep = sseSleepFn ?? ((ms: number) => new Promise((resolve) => setTimeout(resolve, ms)));
 
   const createStream = async function* () {
     let retryDelay: number = sseDefaultRetryDelay ?? 3000;
@@ -112,18 +116,27 @@ export const createSseClient = <TData = unknown>({
       }
 
       try {
-        const response = await fetch(url, { ...options, headers, signal });
+        const requestInit: RequestInit = {
+          redirect: 'follow',
+          ...options,
+          body: options.serializedBody,
+          headers,
+          signal,
+        };
+        let request = new Request(url, requestInit);
+        if (onRequest) {
+          request = await onRequest(url, requestInit);
+        }
+        // fetch must be assigned here, otherwise it would throw the error:
+        // TypeError: Failed to execute 'fetch' on 'Window': Illegal invocation
+        const _fetch = options.fetch ?? globalThis.fetch;
+        const response = await _fetch(request);
 
-        if (!response.ok)
-          throw new Error(
-            `SSE failed: ${response.status} ${response.statusText}`,
-          );
+        if (!response.ok) throw new Error(`SSE failed: ${response.status} ${response.statusText}`);
 
         if (!response.body) throw new Error('No body in SSE response');
 
-        const reader = response.body
-          .pipeThrough(new TextDecoderStream())
-          .getReader();
+        const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
 
         let buffer = '';
 
@@ -142,6 +155,7 @@ export const createSseClient = <TData = unknown>({
             const { done, value } = await reader.read();
             if (done) break;
             buffer += value;
+            buffer = buffer.replace(/\r\n?/g, '\n'); // normalize line endings
 
             const chunks = buffer.split('\n\n');
             buffer = chunks.pop() ?? '';
@@ -159,10 +173,7 @@ export const createSseClient = <TData = unknown>({
                 } else if (line.startsWith('id:')) {
                   lastEventId = line.replace(/^id:\s*/, '');
                 } else if (line.startsWith('retry:')) {
-                  const parsed = Number.parseInt(
-                    line.replace(/^retry:\s*/, ''),
-                    10,
-                  );
+                  const parsed = Number.parseInt(line.replace(/^retry:\s*/, ''), 10);
                   if (!Number.isNaN(parsed)) {
                     retryDelay = parsed;
                   }
@@ -214,18 +225,12 @@ export const createSseClient = <TData = unknown>({
         // connection failed or aborted; retry after delay
         onSseError?.(error);
 
-        if (
-          sseMaxRetryAttempts !== undefined &&
-          attempt >= sseMaxRetryAttempts
-        ) {
+        if (sseMaxRetryAttempts !== undefined && attempt >= sseMaxRetryAttempts) {
           break; // stop after firing error
         }
 
         // exponential backoff: double retry each attempt, cap at 30s
-        const backoff = Math.min(
-          retryDelay * 2 ** (attempt - 1),
-          sseMaxRetryDelay ?? 30000,
-        );
+        const backoff = Math.min(retryDelay * 2 ** (attempt - 1), sseMaxRetryDelay ?? 30000);
         await sleep(backoff);
       }
     }
@@ -234,4 +239,4 @@ export const createSseClient = <TData = unknown>({
   const stream = createStream();
 
   return { stream };
-};
+}

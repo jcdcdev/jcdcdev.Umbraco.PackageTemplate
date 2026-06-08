@@ -13,14 +13,14 @@ jobs:
     steps:
       - name: Build
         id: build
-        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v17
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v18
         with:
           project-name: UmbracoPackageTemplate
           project-path: src/UmbracoPackageTemplate/UmbracoPackageTemplate.csproj
           npm-working-dir: src/UmbracoPackageTemplate.Client
           npm-enabled: true
       - name: Release
-        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@v17
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@v18
         with:
           artifact-name: ${{ steps.build.outputs.artifact-name }}
           version: ${{ steps.build.outputs.version }}
