@@ -8,23 +8,10 @@
 
 An opinionated template for creating Umbraco packages hosted on GitHub.
 
-> [!IMPORTANT]
-> Version 16 will only receive security updates and no new features.
+> [!WARNING]
+> Version 16 is no longer supported and is End of Life (EOL).
 
 > Please review the [security policy](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=security-ov-file#supported-versions) for more information.
-
-## Installation
-
-### Install Package
-```powershell
-dotnet add package jcdcdev.Umbraco.PackageTemplate
-```
-
-## Configuration
-
-## Template Parameters
-
-[Documentation](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate?tab=readme-ov-file#template-parameters)
 
 ## Security
 
